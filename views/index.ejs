@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= title %></title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  </head>
+  <body>
+    <h1><%= title %></h1>
+
+    <% if (authenticated) { %>
+    <a href="/spreadsheets">Spreadsheets</a>
+    <a href="/logout">Logout</a>
+    <% } else { %>
+    <a href="/login">Login</a>
+    <% } %>
+  </body>
+</html>
