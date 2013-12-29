@@ -1,5 +1,6 @@
 var OAuthRoutes = require('./OAuth'),
-    SpreadsheetRoutes = require('./Spreadsheet');
+    SpreadsheetRoutes = require('./Spreadsheet'),
+    CalendarRoutes = require('./Calendar');
 
 /** Homepage */
 exports.index = function(req, res) {
@@ -22,3 +23,8 @@ exports.spreadsheet_create = SpreadsheetRoutes.create;
 exports.spreadsheet_list = SpreadsheetRoutes.list;
 exports.spreadsheet_worksheets = SpreadsheetRoutes.worksheets;
 exports.spreadsheet_worksheet = SpreadsheetRoutes.worksheet;
+
+/** Google Calendar handlers */
+exports.calendar_list = CalendarRoutes.calendar_list;
+exports.calendar_create = CalendarRoutes.calendar_create;
+exports.event_list = CalendarRoutes.event_list;

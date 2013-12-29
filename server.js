@@ -35,5 +35,9 @@ app.get('/spreadsheets', [TR.OAuth.RequireOAuth, routes.spreadsheet_list]);
 app.get('/spreadsheets/:spreadsheetId', [TR.OAuth.RequireOAuth, routes.spreadsheet_worksheets]);
 app.get('/spreadsheets/:spreadsheetId/:worksheetId', [TR.OAuth.RequireOAuth, routes.spreadsheet_worksheet]);
 
+app.get('/calendars', [TR.OAuth.RequireOAuth, routes.calendar_list]);
+app.post('/calendars/create', [TR.OAuth.RequireOAuth, routes.calendar_create]);
+app.get('/calendars/:calendarId', [TR.OAuth.RequireOAuth, routes.event_list]);
+
 app.listen(port, host);
 console.log('Listening on port http://' + host + ':' + port);
