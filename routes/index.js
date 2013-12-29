@@ -1,6 +1,3 @@
-/**
- * Handlers for all samples.
- */
 var OAuthRoutes = require('./OAuth'),
     SpreadsheetRoutes = require('./Spreadsheet');
 
@@ -10,7 +7,7 @@ exports.index = function(req, res) {
     title: 'Testerroonie',
     authenticated: req.session.oauth_access_token ? true : false
   };
-  res.render('index', viewData);
+  res.render(viewData.authenticated ? 'index-auth' : 'index', viewData);
 };
 
 
@@ -20,7 +17,7 @@ exports.logout = OAuthRoutes.logout;
 exports.oauth_login = OAuthRoutes.oauth_login;
 exports.oauth_callback = OAuthRoutes.oauth_callback;
 
-/** Google Docs handlers */
+/** Google Docs Spreadsheet handlers */
 exports.spreadsheet_create = SpreadsheetRoutes.create;
 exports.spreadsheet_list = SpreadsheetRoutes.list;
 exports.spreadsheet_worksheets = SpreadsheetRoutes.worksheets;

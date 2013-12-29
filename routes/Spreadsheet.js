@@ -1,6 +1,3 @@
-/**
- * Handlers for all samples.
- */
 var TR = require('../testerroonie'),
     googleapis = require('googleapis');
 
