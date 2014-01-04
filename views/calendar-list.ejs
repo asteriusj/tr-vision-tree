@@ -10,7 +10,7 @@
     <ul>
       <% for(var i=0; i<calendars.length; i++) { %>
       <li>
-        <a href="/calendars/<%=calendars[i].id %>" title="<%=calendars[i].description %>" style="background: <%=calendars[i].backgroundColor %>;color: <%=calendars[i].foregroundColor %>">
+        <a href="/calendars/<%=encodeURIComponent(calendars[i].id) %>" title="<%=calendars[i].description %>" style="background: <%=calendars[i].backgroundColor %>;color: <%=calendars[i].foregroundColor %>">
           <%=calendars[i].summary %>
         </a>
       </li>

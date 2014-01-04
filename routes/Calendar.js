@@ -31,7 +31,7 @@ exports.calendar_create = function(req, res) {
 
 exports.event_list = function(req, res) {
 
-  var calendarId = req.params.calendarId;
+  var calendarId = req.params.calendarId; // auto-decoded!
 
   GCal.Events.list(calendarId, req.OAuthClient, function(err, events) {
     if (err) {
