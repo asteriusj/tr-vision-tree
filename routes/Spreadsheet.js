@@ -1,8 +1,8 @@
-var TR = require('../testerroonie'),
+var Spreadsheets = require('../lib/gdocs/spreadsheet'),
     googleapis = require('googleapis');
 
 exports.create = function(req, res) {
-  TR.Spreadsheets.create(req.body.title,req.OAuthClient,function(err, body, resp) {
+  Spreadsheets.create(req.body.title,req.OAuthClient,function(err, body, resp) {
     if (err) {
       console.log('error', err);
       return res.send(err);
@@ -14,7 +14,7 @@ exports.create = function(req, res) {
 
 exports.list = function(req, res) {
   console.log("Spreadsheet.list");
-  TR.Spreadsheets.list(req.OAuthClient,function(err, spreadsheets) {
+  Spreadsheets.list(req.OAuthClient,function(err, spreadsheets) {
     if (err) {
       console.log('error', err);
       return res.send(err);
@@ -35,7 +35,7 @@ exports.worksheets = function(req, res) {
 
   var spreadsheetId = req.params.spreadsheetId;
 
-  TR.Spreadsheets.getWorksheets(spreadsheetId, req.OAuthClient,function(err, worksheets) {
+  Spreadsheets.getWorksheets(spreadsheetId, req.OAuthClient,function(err, worksheets) {
     if (err) {
       console.log('error', err);
       return res.send(err);
@@ -58,7 +58,7 @@ exports.worksheet = function(req, res) {
   var spreadsheetId = req.params.spreadsheetId;
   var worksheetId = req.params.worksheetId;
 
-  TR.Spreadsheets.getWorksheetRows(spreadsheetId, worksheetId, req.OAuthClient, function(err, rows) {
+  Spreadsheets.getWorksheetRows(spreadsheetId, worksheetId, req.OAuthClient, function(err, rows) {
     if (err) {
       console.log('error', err);
       return res.send(err);

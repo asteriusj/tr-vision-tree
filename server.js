@@ -1,10 +1,7 @@
-/**
- * Node.js server that demonstrates AsteriusGDocs library (server and client).
- */
 var express = require('express')
   , path = require('path')
   , routes = require('./routes')
-  , TR = require('./testerroonie')
+  , OAuth = require('./lib/oauth')
   , app = express()
   , host = process.env.IP || 'localhost'
   , port = process.env.PORT || 5000;
@@ -30,14 +27,14 @@ app.get('/logout', routes.logout);
 app.get('/oauth/oauth-login', routes.oauth_login);
 app.get('/oauth/oauth-callback', routes.oauth_callback);
 
-app.post('/spreadsheets/create', [TR.OAuth.RequireOAuth, routes.spreadsheet_create]);
-app.get('/spreadsheets', [TR.OAuth.RequireOAuth, routes.spreadsheet_list]);
-app.get('/spreadsheets/:spreadsheetId', [TR.OAuth.RequireOAuth, routes.spreadsheet_worksheets]);
-app.get('/spreadsheets/:spreadsheetId/:worksheetId', [TR.OAuth.RequireOAuth, routes.spreadsheet_worksheet]);
+app.post('/spreadsheets/create', [OAuth.RequireOAuth, routes.spreadsheet_create]);
+app.get('/spreadsheets', [OAuth.RequireOAuth, routes.spreadsheet_list]);
+app.get('/spreadsheets/:spreadsheetId', [OAuth.RequireOAuth, routes.spreadsheet_worksheets]);
+app.get('/spreadsheets/:spreadsheetId/:worksheetId', [OAuth.RequireOAuth, routes.spreadsheet_worksheet]);
 
-app.get('/calendars', [TR.OAuth.RequireOAuth, routes.calendar_list]);
-app.post('/calendars/create', [TR.OAuth.RequireOAuth, routes.calendar_create]);
-app.get('/calendars/:calendarId', [TR.OAuth.RequireOAuth, routes.event_list]);
+app.get('/calendars', [OAuth.RequireOAuth, routes.calendar_list]);
+app.post('/calendars/create', [OAuth.RequireOAuth, routes.calendar_create]);
+app.get('/calendars/:calendarId', [OAuth.RequireOAuth, routes.event_list]);
 
 app.listen(port, host);
 console.log('Listening on port http://' + host + ':' + port);

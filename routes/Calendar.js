@@ -1,8 +1,8 @@
-var TR = require('../testerroonie'),
+var GCal = require('../lib/gcalendar'),
     googleapis = require('googleapis');
 
 exports.calendar_list = function(req, res) {
-  TR.Calendars.list(req.OAuthClient,function(err, calendars) {
+  GCal.Calendars.list(req.OAuthClient,function(err, calendars) {
     if (err) {
       console.log('error', err);
       return res.send(err);
@@ -19,7 +19,7 @@ exports.calendar_list = function(req, res) {
 };
 
 exports.calendar_create = function(req, res) {
-  TR.Calendars.create(req.body.title, req.OAuthClient, function(err, calendarId) {
+  GCal.Calendars.create(req.body.title, req.OAuthClient, function(err, calendarId) {
     if (err) {
       console.log('error', err);
       return res.send(err);
@@ -33,7 +33,7 @@ exports.event_list = function(req, res) {
 
   var calendarId = req.params.calendarId;
 
-  TR.Events.list(calendarId, req.OAuthClient, function(err, events) {
+  GCal.Events.list(calendarId, req.OAuthClient, function(err, events) {
     if (err) {
       console.log('error', err);
       return res.send(err);

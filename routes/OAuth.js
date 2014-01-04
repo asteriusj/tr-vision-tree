@@ -1,4 +1,4 @@
-var TR = require('../testerroonie'),
+var OAuth = require('../lib/oauth'),
     googleapis = require('googleapis');
 
 /** Login page */
@@ -28,7 +28,7 @@ exports.logout = function(req, res) {
 exports.oauth_login = function(req, res) {
   console.log("oauth_login redirect");
 
-  var OAuthClient = TR.OAuth.GetOAuthClient(req);
+  var OAuthClient = OAuth.GetOAuthClient(req);
 
   var destination = req.query.destination ? req.query.destination : "/";
   console.log('destination',destination);
@@ -56,7 +56,7 @@ exports.oauth_callback = function(req, res) {
   if (code) {
     console.log("requesting access token");
 
-    var OAuthClient = TR.OAuth.GetOAuthClient(req);
+    var OAuthClient = OAuth.GetOAuthClient(req);
 
     OAuthClient.getToken(code, function(err, tokens) {
       console.log("oauth_callback auth.getToken");
