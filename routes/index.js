@@ -8,7 +8,7 @@ exports.index = function(req, res) {
     title: 'Testerroonie',
     authenticated: req.session.oauth_access_token ? true : false
   };
-  res.render(viewData.authenticated ? 'index-auth' : 'index', viewData);
+  res.render('index', viewData);
 };
 
 
