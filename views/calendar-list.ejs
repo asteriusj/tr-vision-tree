@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= title %></title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  </head>
+  <body>
+    <h1><%= title %></h1>
+
+    <ul>
+      <% for(var i=0; i<calendars.length; i++) { %>
+      <li>
+        <a href="/calendars/<%=encodeURIComponent(calendars[i].id) %>" title="<%=calendars[i].description %>" style="background: <%=calendars[i].backgroundColor %>;color: <%=calendars[i].foregroundColor %>">
+          <%=calendars[i].summary %>
+        </a>
+      </li>
+      <% } %>
+    </ul>
+
+    <form method="POST" action="/calendars/create">
+      <label for="title">Title</label>
+      <input type="text" name="title" id="title" />
+      <button type="submit">Create New Calendar</button>
+    </form>
+  </body>
+</html>
