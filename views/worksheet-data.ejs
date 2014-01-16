@@ -8,6 +8,8 @@
     <!-- Optional theme -->
     <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap-theme.min.css">
 
+    <link href="http://ajax.aspnetcdn.com/ajax/jquery.dataTables/1.9.4/css/jquery.dataTables.css" rel="stylesheet" media="screen">
+
     <link rel="stylesheet" href="/css/styles.css">
 
     <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
@@ -19,18 +21,62 @@
   <body>
     <h1><%= title %></h1>
 
-    <ol>
-      <% for(var i=0; i<rows.length; i++) { %>
-      <li>
-          <%=rows[i].summary %>
-      </li>
-      <% } %>
-    </ol>
+    <div class="row">
+      <div class="col-md-12">
+        <div class="table-responsive">
+          <table id="worksheetdata" class="table">
+            <thead>
+              <tr>
+                <% for(var h=0; h<worksheet.columns.length; h++) { %>
+                <th><%=worksheet.columns[h] %></th>
+                <% } %>
+              </tr>
+            </thead>
+            <tbody>
+              <% for(var r=0; r<worksheet.data.length; r++) { %>
+              <tr>
+                <% for(var c=0; c<worksheet.data[r].length; c++) { %>
+                <td><%=worksheet.data[r][c] %></td>
+                <% } %>
+              </tr>
+              <% } %>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <!--<div class="row">
+      <div class="col-md-12">
+        <button type="button" class="btn btn-primary btn-lg pull-right">Save</button>
+      </div>
+    </div>-->
 
 
     <script src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
 
     <!-- Latest compiled and minified JavaScript -->
     <script src="//netdna.bootstrapcdn.com/bootstrap/3.0.3/js/bootstrap.min.js"></script>
+
+    <script src="http://ajax.aspnetcdn.com/ajax/jquery.dataTables/1.9.4/jquery.dataTables.min.js"></script>
+    <script src="/js/lib/jquery.jeditable.mini.js"></script>
+    <script>
+      $(function(){
+        var worksheetdata = $('#worksheetdata').dataTable({
+          "bProcessing": true,
+          "fnDrawCallback": function() {
+            $("#worksheetdata tbody td").editable('../examples_support/editable_ajax.php',{
+              "callback": function(sValue,y){
+                worksheetdata.fnDraw();
+              }
+            })
+          }
+        });
+
+        //$("#saveDataBtn").on('click',function() {
+        //  alert("saving data");
+        //});
+      });
+    </script>
   </body>
 </html>
