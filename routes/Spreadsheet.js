@@ -58,7 +58,7 @@ exports.worksheet = function(req, res) {
   var spreadsheetId = req.params.spreadsheetId;
   var worksheetId = req.params.worksheetId;
 
-  Spreadsheets.getWorksheetRows(spreadsheetId, worksheetId, req.OAuthClient, function(err, rows) {
+  Spreadsheets.getWorksheet(spreadsheetId, worksheetId, req.OAuthClient, function(err, worksheet) {
     if (err) {
       console.log('error', err);
       return res.send(err);
@@ -69,7 +69,7 @@ exports.worksheet = function(req, res) {
       authenticated: req.session.oauth_access_token ? true : false,
       spreadsheetID:spreadsheetId,
       worksheetId:worksheetId,
-      rows: rows
+      worksheet: worksheet
     };
 
     return res.render('worksheet-data', viewData);
