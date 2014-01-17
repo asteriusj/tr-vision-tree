@@ -27,11 +27,38 @@ function WorksheetModel(args) {
    */
   this.data = [];
 
+  var _private = {
+    initGoogleBody: function(body) {
+      if (body.feed.entry) {
+        for (var i=0; i<body.feed.entry.length; i++) {
+          var entry = body.feed.entry[i];
+          var row = [];
+
+          for (var key in entry) {
+            if (key.indexOf('gsx$') === 0) {
+
+              // add columns only once
+              if (i === 0) {
+                SELF.columns[SELF.columns.length] = key.substr(4);
+              }
+
+              // add data to row
+              row[row.length] = entry[key]['$t'];
+            }
+          }
+
+          // add row
+          SELF.data[SELF.data.length] = row;
+        }
+      }
+    }
+  };
+
   // init
   (function() {
     if (args) {
-      if (args.columns) {
-        SELF.columns = args.columns;
+      if (args.googleBody) {
+        _private.initGoogleBody(args.googleBody);
       }
     }
   })();
