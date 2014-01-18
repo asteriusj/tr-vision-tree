@@ -36,5 +36,8 @@ app.get('/calendars', [OAuth.RequireOAuth, routes.calendar_list]);
 app.post('/calendars/create', [OAuth.RequireOAuth, routes.calendar_create]);
 app.get('/calendars/:calendarId', [OAuth.RequireOAuth, routes.event_list]);
 
+app.get('/docbook/create', [OAuth.RequireOAuth, routes.docbook_form]);
+app.post('/docbook/create', [OAuth.RequireOAuth, routes.docbook_create]);
+
 app.listen(port, host);
 console.log('Listening on port http://' + host + ':' + port);

@@ -1,6 +1,7 @@
 var OAuthRoutes = require('./OAuth'),
     SpreadsheetRoutes = require('./Spreadsheet'),
-    CalendarRoutes = require('./Calendar');
+    CalendarRoutes = require('./Calendar'),
+    DocBookRoutes = require('./DocBook');
 
 /** Homepage */
 exports.index = function(req, res) {
@@ -28,3 +29,7 @@ exports.spreadsheet_worksheet = SpreadsheetRoutes.worksheet;
 exports.calendar_list = CalendarRoutes.calendar_list;
 exports.calendar_create = CalendarRoutes.calendar_create;
 exports.event_list = CalendarRoutes.event_list;
+
+/** DocBook (Google Drive) handlers */
+exports.docbook_form = DocBookRoutes.form;
+exports.docbook_create = DocBookRoutes.create;
