@@ -30,6 +30,8 @@ function WorksheetModel(args) {
    */
   this.data = [];
 
+  this.CalSyncCalendarID;
+
   var _private = {
     initGoogleBody: function(body) {
       if (body.feed.entry) {
@@ -66,6 +68,8 @@ function WorksheetModel(args) {
       if (args.googleBody) {
         _private.initGoogleBody(args.googleBody);
       }
+
+      SELF.CalSyncCalendarID = args.CalSyncCalendarID;
     }
   })();
 
