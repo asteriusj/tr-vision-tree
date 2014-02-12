@@ -39,6 +39,27 @@ function WorksheetModel(args) {
           var entry = body.feed.entry[i];
           var row = [];
 
+          // needed for edit/updates
+          row['_'] = {
+            id: entry.id['$t'],
+            updated: entry.updated['$t'],
+            title: entry.title['$t'],
+            content: entry.content['$t'],
+            links: [],
+            editUrl: '',
+          }
+          for (var linkI=0; linkI<entry.link.length; linkI++) {
+            var link = entry.link[linkI];
+            row['_'].links[row['_'].links.length] = {
+              rel: link.rel,
+              type: link.type,
+              href: link.href
+            }
+            if (link.rel === 'edit') {
+              row['_'].editUrl = link.href;
+            }
+          }
+
           for (var key in entry) {
             if (key.indexOf('gsx$') === 0) {
 
