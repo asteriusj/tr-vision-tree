@@ -17,6 +17,9 @@
 function WorksheetModel(args) {
   var SELF = this;
 
+  this.SpreadsheetID;
+  this.WorksheetID;
+
   /** An array of column names
    * @type Array
    */
@@ -57,6 +60,9 @@ function WorksheetModel(args) {
   // init
   (function() {
     if (args) {
+      SELF.SpreadsheetID = args.SpreadsheetID;
+      SELF.WorksheetID = args.WorksheetID;
+
       if (args.googleBody) {
         _private.initGoogleBody(args.googleBody);
       }
