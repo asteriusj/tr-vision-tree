@@ -73,3 +73,24 @@ exports.worksheet = function(req, res) {
     return res.render('worksheet-data', viewData);
   });
 };
+
+exports.worksheet_calsync = function(req, res) {
+  var spreadsheetId = req.params.spreadsheetId;
+  var worksheetId = req.params.worksheetId;
+
+  Spreadsheets.getWorksheet(spreadsheetId, worksheetId, req.OAuthClient, function(err, worksheet) {
+    if (err) {
+      console.log('error', err);
+      return res.send(err);
+    }
+
+    Spreadsheets.calsync(worksheet,req.OAuthClient,function(err, eventId) {
+      if (err) {
+        console.log('error', err);
+        return res.send(err);
+      }
+
+      return res.redirect("/spreadsheets/" + spreadsheetId + "/" + worksheetId);
+    });
+  });
+};

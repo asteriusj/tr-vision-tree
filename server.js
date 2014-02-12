@@ -31,6 +31,7 @@ app.post('/spreadsheets/create', [OAuth.RequireOAuth, routes.spreadsheet_create]
 app.get('/spreadsheets', [OAuth.RequireOAuth, routes.spreadsheet_list]);
 app.get('/spreadsheets/:spreadsheetId', [OAuth.RequireOAuth, routes.spreadsheet_worksheets]);
 app.get('/spreadsheets/:spreadsheetId/:worksheetId', [OAuth.RequireOAuth, routes.spreadsheet_worksheet]);
+app.post('/spreadsheets/:spreadsheetId/:worksheetId/calendarsync', [OAuth.RequireOAuth, routes.spreadsheet_worksheet_calsync]);
 
 app.get('/calendars', [OAuth.RequireOAuth, routes.calendar_list]);
 app.post('/calendars/create', [OAuth.RequireOAuth, routes.calendar_create]);

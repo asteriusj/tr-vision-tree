@@ -24,6 +24,7 @@ exports.spreadsheet_create = SpreadsheetRoutes.create;
 exports.spreadsheet_list = SpreadsheetRoutes.list;
 exports.spreadsheet_worksheets = SpreadsheetRoutes.worksheets;
 exports.spreadsheet_worksheet = SpreadsheetRoutes.worksheet;
+exports.spreadsheet_worksheet_calsync = SpreadsheetRoutes.worksheet_calsync;
 
 /** Google Calendar handlers */
 exports.calendar_list = CalendarRoutes.calendar_list;
