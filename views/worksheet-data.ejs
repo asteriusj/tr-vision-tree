@@ -62,16 +62,16 @@
     <script src="/js/lib/jquery.jeditable.mini.js"></script>
     <script>
       $(function(){
-        var worksheetdata = $('#worksheetdata').dataTable({
-          "bProcessing": true,
-          "fnDrawCallback": function() {
-            $("#worksheetdata tbody td").editable('../examples_support/editable_ajax.php',{
-              "callback": function(sValue,y){
-                worksheetdata.fnDraw();
-              }
-            })
-          }
-        });
+        //var worksheetdata = $('#worksheetdata').dataTable({
+        //  "bProcessing": true,
+        //  "fnDrawCallback": function() {
+        //    $("#worksheetdata tbody td").editable('../examples_support/editable_ajax.php',{
+        //      "callback": function(sValue,y){
+        //        worksheetdata.fnDraw();
+        //      }
+        //    })
+        //  }
+        //});
 
         //$("#saveDataBtn").on('click',function() {
         //  alert("saving data");
