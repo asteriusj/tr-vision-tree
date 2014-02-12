@@ -53,8 +53,6 @@ exports.worksheets = function(req, res) {
 };
 
 exports.worksheet = function(req, res) {
-  console.log('worksheet');
-
   var spreadsheetId = req.params.spreadsheetId;
   var worksheetId = req.params.worksheetId;
 

@@ -67,10 +67,6 @@ exports.oauth_callback = function(req, res) {
       }
 
       console.log("tokens", tokens);
-      console.log("access_token");
-      console.log(tokens.access_token);
-      console.log("refresh_token");
-      console.log(tokens.refresh_token);
 
       req.session.oauth_access_token = tokens.access_token;
       req.session.oauth_refresh_token = tokens.refresh_token;
