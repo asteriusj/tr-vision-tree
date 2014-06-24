@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <!-- Copyright (c) 2014 Asterius Media LLC -->
+    <!-- -->
+    <meta name="description" content="[An example of getting started with Cytoscape.js]" />
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
+    <script type="text/javascript" src="js/jquery.cookie.js"></script>
+    <script type="text/javascript" src="js/jstorage.min.js"></script>
+    <link href="css/style.css" type="text/css" rel="stylesheet"/>
+    <meta charset=utf-8 />
+    <title>Community Visioning</title>
+    <!--<script src="http://cytoscape.github.io/cytoscape.js/api/cytoscape.js-latest/cytoscape.min.js"></script>-->
+    <script src="js/cytoscape.min.js"></script>
+
+    <!-- Kick everything off -->
+    <script src="js/script.js" type="text/javascript"></script>
+
+    <script type="text/javascript">
+
+     $(document).ready(function ()
+     {
+
+         getMyData();
+
+     });
+
+    </script>
+
+</head>
+<body> 
+  <div id="cy"></div>
+  <div id="info">Tap a node to highlight its neighbourhood</div>
+</body>
+</html>
